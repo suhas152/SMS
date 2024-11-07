@@ -1,0 +1,33 @@
+{% extends 'Navbar/Projectnavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+</head>
+<body>
+{% block body %}
+
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="num1" placeholder="Number 1" required>
+            <input type="text" name="num2" placeholder="Number 2" required>
+            <select name="operation">
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="divide">Divide</option>
+            </select>
+            <button type="submit">Calculate</button>
+        </form>
+        {% if result is not None %}
+            <h2>Result: {{ result }}</h2>
+        {% endif %}
+    </div>
+{% endblock %}
+</body>
+</html>
